@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#f4dfc5">
+  <title>Ice Cookies and Cream Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <div id="hud">
+      <div class="brand">
+        <span class="brand-icon">🍨</span>
+        <div><b>COOKIE CREAM</b><small>ICE CREAM SHOP</small></div>
+      </div>
+      <div class="stats">
+        <div class="stat">🪙 <b id="coins">0</b></div>
+        <div class="stat">🔥 <b id="streak">0</b>x</div>
+        <div class="stat">⭐ Lv. <b id="level">1</b></div>
+        <div class="stat">✨ <b id="xp">0</b> XP</div>
+      </div>
+    </div>
+
+    <div id="scene-wrap"><div id="scene"></div></div>
+
+    <div id="order-card" class="glass">
+      <div class="order-top"><span>🧑‍🍳 PESANAN PELANGGAN</span><span id="timer">⏱ 60s</span></div>
+      <div class="customer-line">
+        <div id="customer-avatar">🙂</div>
+        <div><b id="customer-name">Menunggu pelanggan</b><small id="customer-says">Selamat datang!</small></div>
+      </div>
+      <div class="order-detail">
+        <div id="order-emoji">🍦</div>
+        <div><b id="order-name">Cookies & Cream</b><small id="order-description">Buat pesanan sesuai resep.</small></div>
+      </div>
+      <div class="progress-track"><div id="time-bar"></div></div>
+    </div>
+
+    <div id="recipe-card" class="glass">
+      <div class="panel-title">🧁 MEJA RACIK <small id="recipe-count">0/5 bahan</small></div>
+      <div id="recipe-steps"></div>
+
+      <div class="menu-section">
+        <div class="menu-section-head">🥤 MENU BIASA</div>
+        <div class="ingredients" id="ingredients-regular-grid"></div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-section-head">✨ MENU SPESIAL</div>
+        <div class="ingredients" id="ingredients-special-grid"></div>
+      </div>
+
+      <div class="actions">
+        <button id="reset-recipe" class="secondary">↻ Ulangi</button>
+        <button id="serve" class="serve">Sajikan ➜</button>
+      </div>
+      <div id="feedback" aria-live="polite">Pilih bahan sesuai urutan resep!</div>
+    </div>
+
+    <div id="bottom-bar">
+      <div class="mission">🎯 Target hari ini: <b id="target">5</b> pesanan <span id="served-count">0/5</span></div>
+      <div class="bottom-buttons">
+        <button id="mode-toggle" title="Ganti Mode Bermain (Santai / Rush Hour)">⚡</button>
+        <button id="decor-shop" title="Dekorasi Toko 3D">🪴</button>
+        <button id="pause">Ⅱ</button>
+        <button id="sound">🔊</button>
+        <button id="settings">⚙️</button>
+      </div>
+    </div>
+
+    <div id="start-screen" class="overlay">
+      <div class="modal">
+        <div class="hero-emoji">🍨🍪</div>
+        <p class="eyebrow">WELCOME TO YOUR LITTLE SHOP</p>
+        <h1>ICE COOKIES<br><span>& CREAM</span></h1>
+        <p>Jadilah koki es krim! Layani pelanggan, racik resep, dan kembangkan tokomu.</p>
+        <div class="howto"><span>🧑‍🍳 Koki 3D</span><span>🚶 Pelanggan</span><span>🍦 Racik & sajikan</span></div>
+        <button id="play" class="primary">MULAI BERMAIN ▶</button>
+        <small>Kontrol: klik bahan • WASD untuk menggerakkan koki • drag untuk memutar kamera</small>
+      </div>
+    </div>
+
+    <div id="pause-screen" class="overlay hidden">
+      <div class="modal compact">
+        <div class="hero-emoji">⏸️</div>
+        <h2>Game Dijeda</h2>
+        <p>Istirahat sebentar, tokomu menunggu!</p>
+        <button id="resume" class="primary">LANJUTKAN</button>
+        <button id="restart" class="secondary wide">ULANGI GAME</button>
+      </div>
+    </div>
+
+    <div id="settings-screen" class="overlay hidden">
+      <div class="modal compact">
+        <div class="hero-emoji">⚙️</div>
+        <h2>Pengaturan</h2>
+        <p>Gunakan drag pada layar untuk memutar sudut pandang. Scroll untuk zoom.</p>
+        <button id="close-settings" class="primary">SELESAI</button>
+      </div>
+    </div>
+
+    <div id="decor-screen" class="overlay hidden">
+      <div class="modal decor-modal">
+        <div class="hero-emoji">🪴✨</div>
+        <h2>Dekorasi Toko 3D</h2>
+        <p>Gunakan koinmu untuk mempercantik suasana toko es krim secara langsung!</p>
+        <div id="decor-summary" class="decor-summary">Terpasang: 1/8 item • Koinmu: 🪙 0</div>
+        <div id="decor-list" class="decor-list"></div>
+        <button id="close-decor" class="primary">TUTUP</button>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
